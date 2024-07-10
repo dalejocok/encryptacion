@@ -36,11 +36,11 @@ function decrypt() {
         let found = false;
 
         // Verificar patrones desde el más largo al más corto
-        if (inputText.substr(i, 10) === 'enter') {
+        if (inputText.substr(i, 5) === 'enter') {
             outputText += 'e';
             i += 5;
             found = true;
-        } else if (inputText.substr(i, 1) === 'imes') {
+        } else if (inputText.substr(i, 4) === 'imes') {
             outputText += 'i';
             i += 4;
             found = true;
