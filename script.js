@@ -33,33 +33,51 @@ function decrypt() {
     let i = 0;
 
     while (i < inputText.length) {
-        let char = inputText.substr(i, 5);
+        let found = false;
 
-        switch (char) {
-            case 'enter':
-                outputText += 'e';
-                i += 5;
-                break;
-            case 'imes':
-                outputText += 'i';
-                i += 4;
-                break;
-            case 'ai':
-                outputText += 'a';
-                i += 2;
-                break;
-            case 'ober':
-                outputText += 'o';
-                i += 4;
-                break;
-            case 'ufat':
-                outputText += 'u';
-                i += 4;
-                break;
-            default:
-                // Si no encuentra ninguna secuencia de 5 caracteres válida, agrega el carácter actual
-                outputText += inputText[i];
-                i++;
+        // Verificar las secuencias en orden de longitud
+        for (let length = 5; length >= 2; length--) {
+            if (i + length <= inputText.length) {
+                let char = inputText.substr(i, length);
+
+                switch (char) {
+                    case 'enter':
+                        outputText += 'e';
+                        i += length;
+                        found = true;
+                        break;
+                    case 'imes':
+                        outputText += 'i';
+                        i += length;
+                        found = true;
+                        break;
+                    case 'ai':
+                        outputText += 'a';
+                        i += length;
+                        found = true;
+                        break;
+                    case 'ober':
+                        outputText += 'o';
+                        i += length;
+                        found = true;
+                        break;
+                    case 'ufat':
+                        outputText += 'u';
+                        i += length;
+                        found = true;
+                        break;
+                }
+
+                if (found) {
+                    break; // Salir del bucle for una vez que se ha encontrado una coincidencia
+                }
+            }
+        }
+
+        if (!found) {
+            // Si no se encontró ninguna coincidencia, agregar el carácter original
+            outputText += inputText[i];
+            i++;
         }
     }
 
