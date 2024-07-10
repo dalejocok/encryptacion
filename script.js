@@ -47,7 +47,7 @@ function decrypt() {
                 }
                 break;
             case 'i':
-                if (inputText.substr(i, 4) === 'imes') {
+                if (inputText.substr(i, 3) === 'imes') {
                     outputText += 'i';
                     i += 4;
                 } else {
