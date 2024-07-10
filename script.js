@@ -36,7 +36,7 @@ function decrypt() {
         let found = false;
 
         // Verificar patrones desde el más largo al más corto
-        if (inputText.substr(i, 5) === 'enter') {
+        if (inputText.substr(i, 6) === 'enter') {
             outputText += 'e';
             i += 5;
             found = true;
