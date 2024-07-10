@@ -30,54 +30,62 @@ function encrypt() {
 function decrypt() {
     let inputText = document.getElementById('input-text').value.trim().toLowerCase();
     let outputText = '';
+
     let i = 0;
-
     while (i < inputText.length) {
-        let found = false;
+        let char = inputText[i];
 
-        // Verificar las secuencias en orden de longitud
-        for (let length = 5; length >= 2; length--) {
-            if (i + length <= inputText.length) {
-                let char = inputText.substr(i, length);
-
-                switch (char) {
-                    case 'enter':
-                        outputText += 'e';
-                        i += length;
-                        found = true;
-                        break;
-                    case 'imes':
-                        outputText += 'i';
-                        i += length;
-                        found = true;
-                        break;
-                    case 'ai':
-                        outputText += 'a';
-                        i += length;
-                        found = true;
-                        break;
-                    case 'ober':
-                        outputText += 'o';
-                        i += length;
-                        found = true;
-                        break;
-                    case 'ufat':
-                        outputText += 'u';
-                        i += length;
-                        found = true;
-                        break;
+        // Verificar las reglas de desencriptación
+        switch (char) {
+            case 'e':
+                if (inputText.substr(i, 5) === 'enter') {
+                    outputText += 'e';
+                    i += 5;
+                } else {
+                    outputText += 'e';
+                    i++;
                 }
-
-                if (found) {
-                    break; // Salir del bucle for una vez que se ha encontrado una coincidencia
+                break;
+            case 'i':
+                if (inputText.substr(i, 4) === 'imes') {
+                    outputText += 'i';
+                    i += 4;
+                } else {
+                    outputText += 'i';
+                    i++;
                 }
-            }
-        }
-
-        if (!found) {
-            // Si no se encontró ninguna coincidencia, agregar el carácter original
-            outputText += inputText[i];
-            i++;
+                break;
+            case 'a':
+                if (inputText.substr(i, 2) === 'ai') {
+                    outputText += 'a';
+                    i += 2;
+                } else {
+                    outputText += 'a';
+                    i++;
+                }
+                break;
+            case 'o':
+                if (inputText.substr(i, 4) === 'ober') {
+                    outputText += 'o';
+                    i += 4;
+                } else {
+                    outputText += 'o';
+                    i++;
+                }
+                break;
+            case 'u':
+                if (inputText.substr(i, 4) === 'ufat') {
+                    outputText += 'u';
+                    i += 4;
+                } else {
+                    outputText += 'u';
+                    i++;
+                }
+                break;
+            default:
+                outputText += char;
+                i++;
+                break;
         }
     }
 
