@@ -40,7 +40,7 @@ function decrypt() {
             outputText += 'e';
             i += 5;
             found = true;
-        } else if (inputText.substr(i, 2) === 'imes') {
+        } else if (inputText.substr(i, 1) === 'imes') {
             outputText += 'i';
             i += 4;
             found = true;
