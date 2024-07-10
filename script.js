@@ -57,6 +57,7 @@ function decrypt() {
                 i += 4;
                 break;
             default:
+                // Si no encuentra ninguna secuencia de 5 caracteres válida, agrega el carácter actual
                 outputText += inputText[i];
                 i++;
         }
